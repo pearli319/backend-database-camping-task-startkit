@@ -133,10 +133,18 @@ DELETE FROM "SKILL" WHERE name = '空中瑜伽';
     -- 2. 在課程專長 `skill_id` 上設定為「 `重訓` 」
     -- 3. 在課程名稱上，設定為「`重訓基礎課`」
     -- 4. 授課開始時間`start_at`設定為2024-11-25 14:00:00
-    -- 5. 授課結束時間`end_at`設定為2024-11-25 16:00:00
+    -- 5. 授課結束時間`end_at`設定為1
     -- 6. 最大授課人數`max_participants` 設定為10
     -- 7. 授課連結設定`meeting_url`為 https://test-meeting.test.io
-
+INSERT INTO "COURSE" (user_id, skill_id, name, start_at, end_at, max_participants, meeting_url)
+VALUES
+	((SELECT id FROM "USER" WHERE email = 'lee2000@hexschooltest.io'),
+	 (SELECT id FROM "SKILL" WHERE name = '重訓'),
+	 '重訓基礎課',
+	 '2024-11-25 14:00:00',
+	 '2024-11-25 16:00:00',
+	 10,
+	 'https://test-meeting.test.io');
 
 -- ████████  █████   █    █████ 
 --   █ █   ██    █  █     █     
